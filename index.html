@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="./CSS/style.css">
+    <title>Paradox Clothes</title>
+</head>
+
+<body>
+
+    <div id="title">
+        <h1>Paradox Clothes</h1>
+    </div>
+
+    <!-- NavBar -->
+
+    <header>
+        <div>
+            <ul class="navbar">
+                <li>Main Menu</li>
+                <li>Shop</li>
+                <li>Our Story</li>
+                <li>Contact</li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+
+        <h2 class="subtitle">Welcome to our websyte, feel like if it was your home</h2>
+
+        <div>
+            <h3 class="subtitle">Here you have some of our products, all of them are handmade</h3>
+        </div>
+
+        <div class="lista-vacia">
+
+        </div>
+
+        <!-- Cards -->
+
+
+        <div class="container">
+            <h2>Catalogue</h2>
+        </div>
+
+        <div class="align_products">
+
+            <div class="product_container  border-dark mb-3" id="product1" style="max-width: 20rem;">
+                <div id="product_name1">Pikachu T-Shirt</div>
+                <div>
+                    <img src="./Images/Pikachu_Tshirt.jpg" alt="Pikachu T-shirt">
+                </div>
+                <div class="card-body">
+                    <p id="product_price1">Price: $17</p>
+                    <button type="button" class="btn btn-outline-dark" id="buyButton1">Add to cart</button>
+                </div>
+            </div>
+            <div class="product_container border-dark mb-3" style="max-width: 20rem;">
+                <div class="card-header">Charmander T-Shirt</div>
+                <div>
+                    <img src="./Images/Charmander_Tshirt.jpg" alt="Charmander T-shirt">
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Price: $16</p>
+                    <button type="button" class="btn btn-outline-dark" id="buyButton2">Add to cart</button>
+                </div>
+            </div>
+            <div class="product_container border-dark mb-3" style="max-width: 20rem;">
+                <div class="card-header">Bulbasaur T-Shirt</div>
+                <div>
+                    <img src="./Images/Bulbasaur_Tshirt.jpg" alt="Bulbasaur T-shirt">
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Price: $15</p>
+                    <button type="button" class="btn btn-outline-dark" id="buyButton3">Add to cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="align_products">
+            <div class="product_container  border-dark mb-3" id="product1" style="max-width: 20rem;">
+                <div id="product_name1">Squirtle T-Shirt</div>
+                <div>
+                    <img src="./Images/Squirtle_Tshirt.jpg" alt="Squirtle T-shirt">
+                </div>
+                <div class="card-body">
+                    <p id="product_price1">Price: $16</p>
+                    <button type="button" class="btn btn-outline-dark" id="buyButton4">Add to cart</button>
+                </div>
+            </div>
+            <div class="product_container border-dark mb-3" style="max-width: 20rem;">
+                <div class="card-header">Batman T-Shirt</div>
+                <div>
+                    <img src="./Images/Batman_Tshirt.jpg" alt="Batman T-shirt">
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Price: $17</p>
+                    <button type="button" class="btn btn-outline-dark" id="buyButton5">Add to cart</button>
+                </div>
+            </div>
+            <div class="product_container border-dark mb-3" style="max-width: 20rem;">
+                <div class="card-header">Superman T-Shirt</div>
+                <div>
+                    <img src="./Images/Superman_Tshirt.jpg" alt="Superman T-shirt">
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Price: $16</p>
+                    <button type="button" class="btn btn-outline-dark" id="buyButton6">Add to cart</button>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <!-- Cart -->
+
+        <div class="cart_container">
+            <h2>Your shooping cart</h2>
+            <p id="cart_message">Your cart contains...</p>.
+            <div id="chart_product1"></div>
+            <div id="chart_product2"></div>
+            <div id="chart_product3"></div>
+            <div id="chart_product4"></div>
+            <div id="chart_product5"></div>
+            <div id="chart_product6"></div>
+
+            <div id="cart_products">
+
+<!--                 <h4 class="card-title">Producto C</h4>
+                <p class="card-text">Precio: </p>
+                <button type="button" class="btn btn-outline-primary">Eliminar</button> -->
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- Form -->
+
+        <form class="form_container">
+            <h3>Formulario de Contacto</h3>
+            <label> First name and last name</label>
+            <input type="text" class="form-control" id="inputName" placeholder="Ingrese su Nombre y Apellido">
+            <label> e-mail</label>
+            <input type="email" class="form-control" id="inputEmail" placeholder="Ingrese su E-mail">
+            <div class="container-form">
+
+                <button type="submit" class="btn btn-secondary">Comprar y Enviar Información</button>
+            </div>
+        </form>
+
+    </main>
+
+    <h5>Paradox Clothes® by Paladino Bruno</h5>
+
+    <script src="./app.js"></script>
+
+</body>
+
+</html>

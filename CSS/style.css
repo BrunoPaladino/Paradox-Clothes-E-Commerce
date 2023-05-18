@@ -1,0 +1,82 @@
+*{
+    margin: o;
+    padding: o;
+    box-sizing: border-box;
+}
+
+*{
+    font-family: 'Roboto', sans-serif;
+}
+
+#title{
+    width: 100vw;
+    height: 12vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: whitesmoke;
+    background-image: url(../Images/Title_Background.jpg);    
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+h2{
+    text-align: center;
+}
+
+.subtitle{
+    text-align: center;
+}
+
+/*CENTRADO DE NAVEGADOR*/
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    width: 100vw;
+    text-align: center;
+    font-size: 1.4rem;
+    margin: 10px;
+    list-style: none;
+}
+/* FIN CENTRADO NAVEGADOR */
+
+.align_products{
+    display: flex;
+    margin: 50px;
+    padding: 20px;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.product_container{
+    text-align: center;
+}
+
+.product_text_container{
+    width: 300px;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+}
+
+.product_text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    list-style: none;
+}
+
+img{
+    width: 200px;
+    height: 220px;
+}
+
+.form_container{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    padding: 10px;
+/*     justify-content: center; */
+}
