@@ -1,11 +1,7 @@
-let id, name, price, category;
+let id, name, price, category, quantityInCart, pluralprice;
 let item;
 let more;
 let total;
-let pluralprice;
-
-// Para el carrito de compras usamos un array, donde guardamos los productos que el comprador selecciona
-const cart = [];
 
 //funcion constructora para objetos personalizados
 function product(id, name, image, price, category, quantityInCart, pluralprice) {
@@ -15,7 +11,7 @@ function product(id, name, image, price, category, quantityInCart, pluralprice) 
     this.price = Number(price);
     this.category = category;
     this.quantityInCart = quantityInCart;
-    this.pluralprice = pluralprice;
+    this.pluralprice = Number(pluralprice);
 }
 
 //objetos, los diferencio por categoria
@@ -46,12 +42,22 @@ const cart_container = document.querySelector("#cart_container");
 const cart_contain = document.querySelector("#cart_contain");
 //contenedor frase "carrito vacio"
 const cart_empty = document.querySelector("#cart_empty");
+//contenedor de formulario de comprador
+const form_container = document.querySelector("#form_container");
 /* FIN ELEMENTOS TRAIDOS CON DOM */
 
+// Para el carrito de compras usamos un array, donde guardamos los productos que el comprador selecciona
+let cart = [];
 
-/* FUNCION PARA PUSHEAR LOS PRODUCTOS A UN ARRAY(products) Y CARGARLOS A LA PAGINA  */
+// Variable donde guardamos los elementos del local storage
+let uploadCart = JSON.parse(localStorage.getItem("Products to buy"));
+
+//Array donde cargamos los productos de la tienda
 const products=[];
 
+
+/* INICIO DE FUNCIONES */
+/* FUNCION PARA PUSHEAR LOS PRODUCTOS A UN ARRAY(products) Y CARGARLOS A LA PAGINA  */
 function push(products,product1, product2, product3, product4,product5, product6){
     products.push(product1, product2, product3, product4,product5, product6);
     chargeProduct(products);
@@ -89,6 +95,13 @@ function chargeButtons(){
 }
 /* FIN FUNCION */
 
+
+if (uploadCart){
+    cart= uploadCart;
+} else {
+cart=[]
+}
+
 /* FUNCION PARA AGREGAR AL CARRITO, la cual activamos con el evento del "click" */
 function addToCart(event){
     const idProduct = event.currentTarget.id;
@@ -114,7 +127,6 @@ showcart();
 /* FUNCION PARA SUMA FINAL DE LA COMPRA */
 function uploadTotalAmount(){
     total = cart.reduce ((acumulator, product) => { return acumulator + product.pluralprice},0);
-    /* console.log(total); */
 }
 /* FIN FUNCION */
 
@@ -124,9 +136,10 @@ function showcart(){
     const new_cart= JSON.parse(cartOBJ);
     console.log(new_cart);
 
-    if (new_cart.length > 0){
+    if (new_cart){
         cart_empty.classList.add("hidden_text");
         cart_contain.classList.remove("hidden_text");
+        form_container.classList.remove("hidden_text");
 
         cart_container.innerHTML = [];
 
@@ -141,7 +154,7 @@ function showcart(){
                 <div id="quantity"> Quantity: ${product.quantityInCart} </div>
                 <p id="product_price"> Price: $${product.price}</p>
                 <p> Subtotal: $${product.pluralprice}</p>
-                <button type="button" class="addProduct" id="${product.id}"> Add to cart </button>
+                <button type="button" class="addProduct" id="${product.id}"> Remove </button>
             </div>
         `
         cart_container.append(productInCart);
@@ -152,18 +165,14 @@ function showcart(){
 }
 
 
-
-
 /* ACTIVACION DE LA PAGINA */
-push(products,product1, product2, product3, product4,product5, product6, product7);
 
-
-
-
-
-
-if (new_cart.length > 0){
-    cart= new_cart;
+if (uploadCart == null){
+    cart = [];
 } else {
-cart=[]
+    cart = uploadCart;
+    showcart();
 }
+
+
+push(products,product1, product2, product3, product4,product5, product6, product7);
