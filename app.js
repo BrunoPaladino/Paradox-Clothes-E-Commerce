@@ -44,6 +44,8 @@ const cart_contain = document.querySelector("#cart_contain");
 const cart_empty = document.querySelector("#cart_empty");
 //contenedor de formulario de comprador
 const form_container = document.querySelector("#form_container");
+//botones para eliminar del carrito
+const buttonRemove = document.querySelectorAll(".removeProduct");
 /* FIN ELEMENTOS TRAIDOS CON DOM */
 
 // Para el carrito de compras usamos un array, donde guardamos los productos que el comprador selecciona
@@ -63,6 +65,7 @@ function push(products,product1, product2, product3, product4,product5, product6
     chargeProduct(products);
 }
 /* FIN FUNCION */
+
 
 /* FUNCION PARA CARGAR PRODUCTOS A LA PAGINA */
 function chargeProduct(products){
@@ -85,34 +88,36 @@ function chargeProduct(products){
 /* FIN FUNCION */
 
 
-/* fUNCION PARA ACTUALIZAR BOTONES DE COMPRA (y asignar evento) */
+/* FUNCION PARA ACTUALIZAR BOTONES DE COMPRA (y asignar evento) */
 function chargeButtons(){
     buttonAdd = document.querySelectorAll(".addProduct");
     buttonAdd.forEach(button =>{
         button.addEventListener("click", addToCart);
-
     })
 }
 /* FIN FUNCION */
 
-
-if (uploadCart){
-    cart= uploadCart;
-} else {
-cart=[]
-}
 
 /* FUNCION PARA AGREGAR AL CARRITO, la cual activamos con el evento del "click" */
 function addToCart(event){
     const idProduct = event.currentTarget.id;
     const productSelected = products.find((selection) => selection.id === idProduct);
 
+/* Animacion toastify, de producto que se agrega al carrito */
+    Toastify({
+        text: `You added ${productSelected.name} to your cart`,
+        className: "info",
+        style: {
+            background: "linear-gradient(to right, #00b09b, #96c93d)",
+        }
+    }).showToast();
+/* Fin de animacion toastify */
+
     if( cart.some((element) => element.id === idProduct) ){
-        const cartUbication = cart.indexOf((element) => element.id === idProduct);
-        productSelected.quantityInCart = productSelected.quantityInCart + 1;
-        productSelected.pluralprice = ( productSelected.price * productSelected.quantityInCart );
-        cart[cartUbication] = productSelected.quantityInCart;
-        cart[cartUbication] = productSelected.pluralprice;
+        const cartUbication = cart.findIndex((element) => element.id === idProduct);              //debo usar la cantidad guardada en el carrito, ya que si uso la del producto
+        cart[cartUbication].quantityInCart = cart[cartUbication].quantityInCart + 1;                //siempre sera 0, y no podre sumar productos que vengan del Local Storage
+        productSelected.pluralprice = ( productSelected.price * cart[cartUbication].quantityInCart );
+        cart[cartUbication].pluralprice = productSelected.pluralprice;
     } else {
         productSelected.quantityInCart = 1;
         cart.push(productSelected);
@@ -124,11 +129,33 @@ showcart();
 }
 /* FIN FUNCION */
 
+/* FUNCION PARA ELIMINAR PRODUCTO DEL CARRITO */
+function removeProduct(event){
+    const idProduct = event.currentTarget.id;
+    const productSelected = products.find((selection) => selection.id === idProduct);
+
+/* Animacion toastify, de producto que descartamos del carrito */
+Toastify({
+    text: `You removed ${productSelected.name} from your cart`,
+    offset: {
+      x: 50, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+      y: 10 // vertical axis - can be a number or a string indicating unity. eg: '2em'
+    },
+}).showToast();
+/* Fin de animacion toastify */
+
+
+
+
+}
+
+
 /* FUNCION PARA SUMA FINAL DE LA COMPRA */
 function uploadTotalAmount(){
     total = cart.reduce ((acumulator, product) => { return acumulator + product.pluralprice},0);
 }
 /* FIN FUNCION */
+
 
 /* FUNCION PARA MOSTRAR CARRITO */
 function showcart(){
@@ -154,7 +181,7 @@ function showcart(){
                 <div id="quantity"> Quantity: ${product.quantityInCart} </div>
                 <p id="product_price"> Price: $${product.price}</p>
                 <p> Subtotal: $${product.pluralprice}</p>
-                <button type="button" class="addProduct" id="${product.id}"> Remove </button>
+                <button type="button" class="removeProduct" id="${product.id}"> Remove </button>
             </div>
         `
         cart_container.append(productInCart);
@@ -162,6 +189,11 @@ function showcart(){
         } else {
         cart_empty.classList.remove("hidden_text");
         }
+    
+/*         buttonRemove = document.querySelectorAll(".removeProduct");
+        buttonRemove.forEach(button =>{
+            button.addEventListener("click", removeProduct);
+        }) */
 }
 
 
@@ -173,6 +205,5 @@ if (uploadCart == null){
     cart = uploadCart;
     showcart();
 }
-
 
 push(products,product1, product2, product3, product4,product5, product6, product7);

@@ -8,6 +8,12 @@
     font-family: 'Roboto', sans-serif;
 }
 
+body {
+    overflow-x: hidden; /* Elimina el scroll horizontal */
+}
+
+
+
 #title{
     width: 100vw;
     height: 12vw;
@@ -27,6 +33,11 @@ h2{
 .subtitle{
     text-align: center;
 }
+
+p {
+    margin: 30px;
+}
+
 
 /*CENTRADO DE NAVEGADOR*/
 .navbar {
@@ -103,3 +114,66 @@ button /* :hover */{
 .hidden_text{
     content-visibility: hidden;
 }
+
+
+
+/* Productos en carrito */
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
+    color: var(--bs-card-color);
+    /* display: flow-root; */
+    margin: auto;
+}
+
+#cart_container{
+    display: flex;
+    flex-direction: row;
+    margin: 50px;
+    padding: 20px;
+    justify-content: space-around;
+    justify-items: center;
+}
+/* Fin productos en carrito */
+
+/* FORMULARIO */
+legend{
+    text-align: center;
+    text-decoration: underline gray;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    height: auto;
+    padding: 12px;
+}
+
+input, select {
+    margin: 5px;
+    width: auto;
+}
+
+#form_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+.container_center{    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons_form{
+    display: flex;
+    justify-content: space-evenly;
+}
+/* FIN DE FORMULARIO */
