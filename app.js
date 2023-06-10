@@ -45,7 +45,9 @@ const cart_empty = document.querySelector("#cart_empty");
 //contenedor de formulario de comprador
 const form_container = document.querySelector("#form_container");
 //botones para eliminar del carrito
-const buttonRemove = document.querySelectorAll(".removeProduct");
+let buttonRemove = document.querySelectorAll(".removeProduct");
+//boton de confirmar compra en formulario
+const buttonConfirm = document.querySelector("#buttonConfirm");
 /* FIN ELEMENTOS TRAIDOS CON DOM */
 
 // Para el carrito de compras usamos un array, donde guardamos los productos que el comprador selecciona
@@ -129,26 +131,6 @@ showcart();
 }
 /* FIN FUNCION */
 
-/* FUNCION PARA ELIMINAR PRODUCTO DEL CARRITO */
-function removeProduct(event){
-    const idProduct = event.currentTarget.id;
-    const productSelected = products.find((selection) => selection.id === idProduct);
-
-/* Animacion toastify, de producto que descartamos del carrito */
-Toastify({
-    text: `You removed ${productSelected.name} from your cart`,
-    offset: {
-      x: 50, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
-      y: 10 // vertical axis - can be a number or a string indicating unity. eg: '2em'
-    },
-}).showToast();
-/* Fin de animacion toastify */
-
-
-
-
-}
-
 
 /* FUNCION PARA SUMA FINAL DE LA COMPRA */
 function uploadTotalAmount(){
@@ -189,16 +171,48 @@ function showcart(){
         } else {
         cart_empty.classList.remove("hidden_text");
         }
-    
-/*         buttonRemove = document.querySelectorAll(".removeProduct");
-        buttonRemove.forEach(button =>{
-            button.addEventListener("click", removeProduct);
-        }) */
+    chargeButtonsRemove();
 }
+/* FIN FUNCION */
+
+
+/* FUNCION PARA CARGAR LOS BOTONES PARA REMOVER PRODUCTO DEL CARRITO DE COMPRA */
+function chargeButtonsRemove(){
+    buttonRemove = document.querySelectorAll(".removeProduct");
+    buttonRemove.forEach(button =>{
+        button.addEventListener("click", removeProduct);
+    })
+}
+/* FIN FUNCION */
+
+
+/* FUNCION PARA ELIMINAR PRODUCTO DEL CARRITO */
+function removeProduct(event){
+    const idProduct = event.currentTarget.id;
+    let productToRemove = cart.find((selection) => selection.id === idProduct);
+    const cartUbication = cart.findIndex((element) => element.id === idProduct);
+    cart.splice(cartUbication,1);
+
+/* Animacion toastify, de producto que descartamos del carrito */
+Toastify({
+    text: `You removed ${productToRemove.name} from your cart`,
+    offset: {
+        x: 50,
+        y: 10
+    },
+}).showToast();
+/* Fin de animacion toastify */
+
+console.log(cart);
+const cartSTR= JSON.stringify(cart);
+localStorage.setItem("Products to buy", cartSTR);
+showcart();
+}
+/* FIN FUNCION */
+
 
 
 /* ACTIVACION DE LA PAGINA */
-
 if (uploadCart == null){
     cart = [];
 } else {
