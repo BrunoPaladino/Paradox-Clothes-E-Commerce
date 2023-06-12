@@ -1,3 +1,62 @@
-{
-    "Nombre":"Bruno"
-}
+[
+    {
+        "id":"01-PikachuT",
+        "name":"Pikachu T-shirt",
+        "image":"./Images/Pikachu_Tshirt.jpg",
+        "price":17,
+        "category":"Pokemon",
+        "quantityInCart": 0,
+        "pluralprice": 17
+    },
+
+    {
+        "id":"02-CharmanderT",
+        "name":"Charmander T-shirt",
+        "image":"./Images/Charmander_Tshirt.jpg",
+        "price": 16,
+        "category":"Pokemon",
+        "quantityInCart": 0,
+        "pluralprice": 16
+    },
+
+    {
+        "id":"03-BulbasaurT",
+        "name":"Bulbasaur T-shirt",
+        "image":"./Images/Bulbasaur_Tshirt.jpg",
+        "price": 15,
+        "category":"Pokemon",
+        "quantityInCart": 0,
+        "pluralprice": 15
+    },
+
+    {
+        "id":"04-SquirtleT",
+        "name":"Squirtle T-shirt",
+        "image":"./Images/Squirtle_Tshirt.jpg",
+        "price": 16,
+        "category":"Pokemon",
+        "quantityInCart": 0,
+        "pluralprice": 16
+    },
+
+    {
+        "id":"05-BatmanT",
+        "name":"Batman T-shirt",
+        "image":"./Images/Batman_Tshirt.jpg",
+        "price": 17,
+        "category":"Heroes",
+        "quantityInCart": 0,
+        "pluralprice": 17
+    },
+
+    {
+        "id":"06-SupermanT",
+        "name":"Superman T-shirt",
+        "image":"./Images/Superman_Tshirt.jpg",
+        "price": 16,
+        "category":"Heroes",
+        "quantityInCart": 0,
+        "pluralprice": 16
+    }
+
+]
